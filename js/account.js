@@ -46,30 +46,32 @@ function updatebasicinfo(){
             opacity: 1
         },100,function(){
             userdataref.update(userinfo).then(() => {
-                var osisref = firebase.database().ref('/osiss/');
-                var osis = $('#osis').val();
-                var osisupdate = {};
-                osisupdate[osis] = userId;
-                var idref = firebase.database().ref('/idcardnums/');
-                var idrefnum = $('#idnum').val();
-                var idupdate = {};
-                idupdate[idrefnum] = userId;
-                osisref.update(osisupdate).then(() => {
-                    idref.update(idupdate).then(() =>{
-                        $('.form').animate({
-                            height: "100%"
-                        },500,function(){
-                            $(this).animate({
-                                opacity: 1
-                            },500);
-                            $('.submitting').animate({
-                                opacity: 0
-                            },100);
+                setTimeout(function(){
+                    var osisref = firebase.database().ref('/osiss/');
+                    var osis = $('#osis').val();
+                    var osisupdate = {};
+                    osisupdate[osis] = userId;
+                    var idref = firebase.database().ref('/idcardnums/');
+                    var idrefnum = $('#idnum').val();
+                    var idupdate = {};
+                    idupdate[idrefnum] = userId;
+                    osisref.update(osisupdate).then(() => {
+                        idref.update(idupdate).then(() =>{
+                            $('.form').animate({
+                                height: "100%"
+                            },500,function(){
+                                $(this).animate({
+                                    opacity: 1
+                                },500);
+                                $('.submitting').animate({
+                                    opacity: 0
+                                },100);
+                            });
+                            Materialize.toast('Information succesfully updated', 10000);
                         });
-                        Materialize.toast('Information succesfully updated', 10000);
                     });
-                });
-            });
+                },750)
+;            });
         });
     });
 }
