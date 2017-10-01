@@ -27,13 +27,13 @@ function updatebasicinfo(){
     var userId = firebase.auth().currentUser.uid;
     var userdataref = firebase.database().ref('/users/' + userId + '/userdata');
     var userinfo = {
-        fullname: $('#full_name').val(),
-        osis: $('#osis').val(),
-        idcardnum: $('#idnum').val(),
-        email: $('#email').val(),
-        grade: $('#grade').val(),
+        fullname: $('.full_name').val(),
+        osis: $('.osis').val(),
+        idcardnum: $('.idnum').val(),
+        email: $('.email').val(),
+        grade: $('.grade').val(),
     }
-    $('#form').animate({
+    $('.form').animate({
         opacity: 0
     },500,function(){
         $(this).animate({
@@ -53,7 +53,7 @@ function updatebasicinfo(){
                 idupdate[idrefnum] = userId;
                 osisref.update(osisupdate).then(() => {
                     idref.update(idupdate).then(() =>{
-                        $('#form').animate({
+                        $('.form').animate({
                             height: "100%"
                         },500,function(){
                             $(this).animate({
@@ -79,12 +79,12 @@ function getuserdata(user){
       if(!snapshot.val()) newusersetup();
       else{
           userdata = snapshot.val();
-          $('#grade').val(userdata.grade);
-          $('#email').val(userdata.email);
-          $('#idnum').val(userdata.idcardnum);
-          $('#osis').val(userdata.osis)
-          $('#full_name').val(userdata.fullname);
-            $('#form').animate({
+          $('.grade').val(userdata.grade);
+          $('.email').val(userdata.email);
+          $('.idnum').val(userdata.idcardnum);
+          $('.osis').val(userdata.osis)
+          $('.full_name').val(userdata.fullname);
+            $('.form').animate({
                 height: "100%"
             },250,function(){
                 $(this).animate({

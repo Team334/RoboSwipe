@@ -19,7 +19,7 @@
                  <a href="#" class="brand-logo"><img class="logo" src="img/logo.png"/></a>
             </div>
         </nav>
-        <div class="row white-text">
+        <div class="row white-text hide-on-small-only">
             <div class="col s3">
                 <h5>People left to be swiped in:</h5>
                 <div class="names">
@@ -29,15 +29,48 @@
                 <div class="row white-text">
                     <input id="numinput" type="number"/>
                 </div>
-                <div class="row white-text center-align">
-                    <h5>People signed in</h5>
-                </div>
                 <div class="row center-align">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Last person to swipe in</span>
+                            <div class="lastswipe"></div>
+                        </div>
+                    </div>
+                    <div class="row white-text center-align">
+                        <h5>People signed in</h5>
+                    </div>
                     <div class="signedinnames">
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row white-text show-on-small hide-on-med-and-up">
+            <div class="row">
+                <div class="row white-text">
+                    <input id="numinput" type="number"/>
+                </div>
+                <div class="row center-align">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                          <span class="card-title">Last person to swipe in</span>
+                            <div class="lastswipe"></div>
+                        </div>
+                    </div>
+                    <div class="row white-text center-align">
+                        <h5>People signed in</h5>
+                    </div>
+                    <div class="signedinnames">
+                    </div>
+                </div>
+            </div>
+            <div class="row center-align">
+                <h5>People left to be swiped in:</h5>
+                <div class="names">
+                </div>
+            </div>
+        </div>
+
      <!--Import jQuery before materialize.js-->
      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
      <script type="text/javascript" src="js/materialize.min.js"></script>

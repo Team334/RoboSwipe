@@ -6,7 +6,7 @@ var d;
 var provider = new firebase.auth.GoogleAuthProvider();
 $(document).ready(function(){
     d = new Date();
-    d = (String(d.getMonth())+"-"+String(d.getDate())+"-"+String(d.getFullYear()))
+    d = (String(d.getMonth()+1)+"-"+String(d.getDate())+"-"+String(d.getFullYear()))
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         initswipe()
@@ -21,10 +21,13 @@ $(document).ready(function(){
         if(e.which == 13) {
             var num = $(this).val();
             var id;
+            var type;
             if(num.length>10){
                 id=idnums[num];
+                type = "ID number";
             }else{
                 id=osiss[num]
+                type = "OSIS number"
             }
             userref = firebase.database().ref('/users/'+id+'/swipes/');
             var update = {};
@@ -46,8 +49,9 @@ $(document).ready(function(){
                         $('body').removeClass('green');
                         $('body').addClass('black');
                     },500)
-                    $('#'+id).remove()
-                    $('.signedinnames').append('<div class="chip" id="'+id+'">'+corrolate[id]+'</div>')
+                    $('.'+id).remove()
+                    $('.lastswipe').html("<h5>"+corrolate[id]+"</h5><h6>using their: </h6><h6>"+type+"</h6>")
+                    $('.signedinnames').append('<div class="chip"'+id+'">'+corrolate[id]+'</div>')
                 })
             }
             $(this).val('')
@@ -65,9 +69,9 @@ function initswipe(){
             data = vals.userdata
             swipes = vals.swipes
             if(swipes){
-                if(swipes[d]) $('.signedinnames').append('<div class="chip" id="'+user+'">'+data.fullname+'</div>')
+                if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>')
             }
-            else $('.names').append('<div class="chip" id="'+user+'">'+data.fullname+'</div>');
+            else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
             corrolate[String(user)] = data.fullname;
         });
     });

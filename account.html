@@ -30,18 +30,18 @@
                     <img src="img/id.png"/ class="id">
 
                     <div id="info" class="black-text">
-                        <div id="form" style="opacity:0;height:0">
+                        <div class="form" style="opacity:0;height:0">
                             <h4>General Info:</h4>
                                 <label>Full Name</label>
-                                <input id="full_name" type="text" class="validate">
+                                <input class="full_name" type="text" class="validate">
                                 <label>OSIS</label>
-                                <input id="osis" type="number" class="validate">
+                                <input class="osis" type="number" class="validate">
                                 <label>ID card number</label>
-                                <input id="idnum" type="number" class="validate">
+                                <input class="idnum" type="number" class="validate">
                                 <label>Email</label>
-                                <input id="email" type="email" class="validate">
+                                <input class="email" type="email" class="validate">
                                 <label>Grade</label>
-                            <select class="browser-default" id="grade">
+                            <select class="browser-default grade">
                                 <option value="none">Select</option>
                                 <option value="freshman">Freshman</option>
                                 <option value="sophmore">Sophmore</option>
@@ -66,6 +66,68 @@
                     </div>
                 </div>
                 <div class="col s6 white-text">
+                    <h2>Swipe History</h2>
+                    <h6>(Last 25 are shown)</h6>
+
+                    <table class="striped" style="background-color:white;color:black">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="swipebody">
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+            <div class="row center-align show-on-small hide-on-med-and-up">
+                <div class="row white-text">
+                    <h2>Account Info</h2>
+                    <h6>Photo for reference:</h6>
+                    <img src="img/id.png"/ class="id">
+
+                    <div id="info" class="black-text">
+                        <div class="form" style="opacity:0;height:0">
+                            <h4>General Info:</h4>
+                                <label>Full Name</label>
+                                <input class="full_name" type="text" class="validate">
+                                <label>OSIS</label>
+                                <input class="osis" type="number" class="validate">
+                                <label>ID card number</label>
+                                <input class="idnum" type="number" class="validate">
+                                <label>Email</label>
+                                <input class="email" type="email" class="validate">
+                                <label>Grade</label>
+                            <select class="browser-default grade">
+                                <option value="none">Select</option>
+                                <option value="freshman">Freshman</option>
+                                <option value="sophmore">Sophmore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                            <br><br>
+                            <a class="waves-effect waves-light btn blue save-info">Update Info</a>
+                        </div>
+                        <div class="preloader-wrapper big active submitting">
+                        <div class="spinner-layer spinner-blue-only">
+                          <div class="circle-clipper left">
+                            <div class="circle"></div>
+                          </div><div class="gap-patch">
+                            <div class="circle"></div>
+                          </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+                <div class="row white-text">
                     <h2>Swipe History</h2>
                     <h6>(Last 25 are shown)</h6>
 
