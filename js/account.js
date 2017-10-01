@@ -1,10 +1,13 @@
 firebase.initializeApp(config);
-
+var user;
 var provider = new firebase.auth.GoogleAuthProvider();
 $(document).ready(function(){
+    $(".modal-close").click(function(){
+        getuserdata(user)})
     $('#firstusermodal').modal();
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
+        user = user;
         getuserdata(user);
       } else {
         window.location = "index.html";
