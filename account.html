@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+     <!--Import Google Icon Font-->
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <!--Import materialize.css-->
+     <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="css/main.css"  media="screen,projection"/>
+     <link type="text/css" rel="stylesheet" href="css/account.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+     <!--Let browser know website is optimized for mobile-->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+
+   <body class="black">
+
+        <nav>
+            <div class="nav-wrapper white black-text valign-wrapper">
+                 <a href="#" class="brand-logo"><img class="logo" src="img/logo.png"/></a>
+                 <a class="waves-effect waves-light btn blue sign-out" style="right:0;position:absolute;margin-right:10px;">Log out</a>
+            </div>
+        </nav>
+
+        <div id="content">
+            <div class="row center-align hide-on-small-only">
+                <div class="col s6 white-text">
+                    <h2>Account Info</h2>
+                    <h6>Photo for reference:</h6>
+                    <img src="img/id.png"/ class="id">
+
+                    <div id="info" class="black-text">
+                        <div id="form" style="opacity:0;height:0">
+                            <h4>General Info:</h4>
+                                <label>Full Name</label>
+                                <input id="full_name" type="text" class="validate">
+                                <label>OSIS</label>
+                                <input id="osis" type="number" class="validate">
+                                <label>ID card number</label>
+                                <input id="idnum" type="number" class="validate">
+                                <label>Email</label>
+                                <input id="email" type="email" class="validate">
+                                <label>Grade</label>
+                            <select class="browser-default" id="grade">
+                                <option value="none">Select</option>
+                                <option value="freshman">Freshman</option>
+                                <option value="sophmore">Sophmore</option>
+                                <option value="junior">Junior</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                            <br><br>
+                            <a class="waves-effect waves-light btn blue save-info">Update Info</a>
+                        </div>
+                        <div class="preloader-wrapper big active submitting">
+                        <div class="spinner-layer spinner-blue-only">
+                          <div class="circle-clipper left">
+                            <div class="circle"></div>
+                          </div><div class="gap-patch">
+                            <div class="circle"></div>
+                          </div><div class="circle-clipper right">
+                            <div class="circle"></div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                </div>
+                <div class="col s6 white-text">
+                    <h2>Swipe History</h2>
+                    <h6>(Last 25 are shown)</h6>
+
+                    <table class="striped" style="background-color:white;color:black">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="swipebody">
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- First time user Modal -->
+        <div id="firstusermodal" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4>Welcome to RoboSwipe!</h4>
+            <p>Thank you for trying out for Team 334 (Brooklyn TechKnights)!</p>
+            <p>RoboSwipe is our attendance software and is going to be used to track your progress. Using RoboSwipe is very easy. Today you'll fill out some basic info and that's it! Next time you come into the lab just scan your ID and your attendance will have been recorded.</p>
+            <br>
+            <h4>Please fill out the general info. If you don't you cannot swipe in!!</h4>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+          </div>
+        </div>
+     <!--Import jQuery before materialize.js-->
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script type="text/javascript" src="js/materialize.min.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+     <script src="js/firebase.js"></script>
+     <script type="text/javascript" src="js/account.js"></script>
+   </body>
+ </html>
