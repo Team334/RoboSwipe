@@ -1,23 +1,40 @@
-body{
+body {
+    height: 100%;
+    background-color: #F9F9F9 !important;
+}
+
+html {
     height: 100%;
 }
-html{
+
+nav {
+    background-color: #262626;
+    height: 13%;
+
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logo {
+    height: 80%;
+    margin-top: 7.5%;
+    margin-bottom: 7.5%;
+}
+
+.brand-logo {
     height: 100%;
 }
-.logo{
+
+#big-hero {
     height: 100%;
 }
-.brand-logo{
-    height: 100%;
-}
-#big-hero{
-    height: 100%;
-}
-.hero-text{
+
+.hero-text {
     width: 100%;
 }
+
 #video-background {
-    filter:blur(10px);
+    filter: blur(10px);
     position: fixed;
     right: 0;
     bottom: 0;
