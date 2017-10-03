@@ -107,6 +107,8 @@ function getuserdata(user){
             idcardnum: 0,
             email: user.email,
             grade: 'none',
+            initname: user.dsiplayName,
+            initemail: user.email
         }
         $('#firstusermodal').modal('open')
         userdataref.update(uploadeddata)

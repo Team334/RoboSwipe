@@ -1,12 +1,29 @@
 .id{
     width: 50%;
 }
-#info{
-    background-color: #FFFFFF;
+.info{
+    background-color: #262626;
     padding: 10px;
     border-radius: 10px;
 }
 .hidden{
     opacity:0;
     height:0
+}
+.dark{
+    background-color: #262626;
+    color: white;
+}
+.dark > th{
+    border-left-width: 2px;
+    border-left-style: dotted;
+    border-right-width: 2px;
+    border-right-style: dotted;
+}
+tr > td{
+    border-left-width: 1px;
+    border-left-style: ridge;
+    border-right-width: 1px;
+    border-right-style: ridge;
+    border-color: #262626;
 }
