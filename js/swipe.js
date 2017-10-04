@@ -69,7 +69,8 @@ function initswipe(){
             data = vals.userdata
             swipes = vals.swipes
             if(swipes){
-                if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>')
+                if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>');
+                else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
             }
             else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
             corrolate[String(user)] = data.fullname;
