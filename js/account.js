@@ -107,7 +107,7 @@ function getuserdata(user){
             idcardnum: 0,
             email: user.email,
             grade: 'none',
-            initname: user.dsiplayName,
+            initname: user.displayName,
             initemail: user.email
         }
         $('#firstusermodal').modal('open')
