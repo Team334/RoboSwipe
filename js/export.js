@@ -139,10 +139,19 @@ function updateswipes(ids,runs,data){
     var dates = [];
     var updates = [];
     $.each(data, function(user,vals) {
-        tmp=[vals.userdata.fullname,user]
         $.each(vals.swipes,function(date,time){
             if(!dates.includes(date)) dates.push(date);
-            tmp.push(convertTimestamp(time));
+        });
+    });
+    $.each(data, function(user,vals) {
+        tmpdates=[];
+        tmp=[vals.userdata.fullname,user]
+        $.each(vals.swipes,function(date,time){
+            tmpdates.push(date);
+        });
+        $.each(dates,function(index,date){
+            if(tmpdates.includes(date)) tmp.push(convertTimestamp(vals.swipes[date]))
+            else tmp.push("ABSENT")
         });
         updates.push(tmp);
     });
@@ -178,15 +187,11 @@ function updateswipes(ids,runs,data){
 
 function convertTimestamp(timestamp) {
   var d = new Date(timestamp),
-		yyyy = d.getFullYear(),
-		mm = ('0' + (d.getMonth() + 1)).slice(-2),
-		dd = ('0' + d.getDate()).slice(-2),
 		hh = d.getHours(),
 		h = hh,
 		min = ('0' + d.getMinutes()).slice(-2),
 		ampm = 'AM',
 		time;
-
 	if (hh > 12) {
 		h = hh - 12;
 		ampm = 'PM';
@@ -196,7 +201,17 @@ function convertTimestamp(timestamp) {
 	} else if (hh == 0) {
 		h = 12;
 	}
-	time = mm + '-' + dd + '-' + yyyy + ', ' + h + ':' + min + ' ' + ampm;
+	time = h + ':' + min + ' ' + ampm;
 
+	return time;
+}
+
+function getdate(timestamp) {
+  var d = new Date(timestamp),
+		yyyy = d.getFullYear(),
+		mm = ('0' + (d.getMonth() + 1)).slice(-2),
+		dd = ('0' + d.getDate()).slice(-2),
+		time;
+	time = mm + '-' + dd + '-' + yyyy;
 	return time;
 }
