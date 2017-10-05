@@ -113,6 +113,24 @@ function updatesheet(ids,runs){
            updateswipes(ids,runs,snpshot)
         });
 
+        var currentdate = new Date();
+        var datetime = "Last Sync: " + (currentdate.getMonth()+1) + "/"
+                         + currentdate.getDate()  + "/"
+                         + currentdate.getFullYear() + " @ "
+                         + currentdate.getHours() + ":"
+                         + currentdate.getMinutes() + ":"
+                         + currentdate.getSeconds();
+        console.log(datetime);
+        gapi.client.sheets.spreadsheets.values.update({
+          spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
+          valueInputOption: 'USER_ENTERED',
+          majorDimension: "ROWS",
+          range: 'Info!H1',
+          values: [[datetime]],
+      }).then(function(response){
+          console.log(response)
+      });
+
     });
 
 }
@@ -124,7 +142,7 @@ function updateswipes(ids,runs,data){
         tmp=[vals.userdata.fullname,user]
         $.each(vals.swipes,function(date,time){
             if(!dates.includes(date)) dates.push(date);
-            tmp.push(time);
+            tmp.push(convertTimestamp(time));
         });
         updates.push(tmp);
     });
@@ -143,7 +161,7 @@ function updateswipes(ids,runs,data){
           values: updates,
       }).then(function(response){
           console.log(response)
-          gapi.client.sheets.spreadsheets.values.append({
+          gapi.client.sheets.spreadsheets.values.update({
             spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
             valueInputOption: 'USER_ENTERED',
             majorDimension: "ROWS",
@@ -156,4 +174,29 @@ function updateswipes(ids,runs,data){
       })
 
        });
+}
+
+function convertTimestamp(timestamp) {
+  var d = new Date(timestamp),
+		yyyy = d.getFullYear(),
+		mm = ('0' + (d.getMonth() + 1)).slice(-2),
+		dd = ('0' + d.getDate()).slice(-2),
+		hh = d.getHours(),
+		h = hh,
+		min = ('0' + d.getMinutes()).slice(-2),
+		ampm = 'AM',
+		time;
+
+	if (hh > 12) {
+		h = hh - 12;
+		ampm = 'PM';
+	} else if (hh === 12) {
+		h = 12;
+		ampm = 'PM';
+	} else if (hh == 0) {
+		h = 12;
+	}
+	time = mm + '-' + dd + '-' + yyyy + ', ' + h + ':' + min + ' ' + ampm;
+
+	return time;
 }
