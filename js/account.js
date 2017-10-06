@@ -108,7 +108,8 @@ function getuserdata(user){
             email: user.email,
             grade: 'none',
             initname: user.displayName,
-            initemail: user.email
+            initemail: user.email,
+            created: Date.now()
         }
         $('#firstusermodal').modal('open')
         userdataref.update(uploadeddata)
