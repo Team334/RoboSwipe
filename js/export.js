@@ -159,7 +159,7 @@ function updateswipes(ids,runs,data){
     console.log(dates);
     gapi.client.sheets.spreadsheets.values.clear({
       spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
-      range: 'Attendance!A2:T',
+      range: 'Attendance!A2:F',
     }).then(function(response) {
 
         gapi.client.sheets.spreadsheets.values.append({

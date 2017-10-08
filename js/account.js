@@ -111,7 +111,8 @@ function getuserdata(user){
             initemail: user.email,
             created: Date.now()
         }
-        $('#firstusermodal').modal('open')
+        $('#firstusermodal').modal({dismissible: false});
+        $('#firstusermodal').modal('open');
         userdataref.update(uploadeddata)
     }
 
