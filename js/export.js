@@ -125,7 +125,7 @@ function updatesheet(ids,runs){
           spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
           valueInputOption: 'USER_ENTERED',
           majorDimension: "ROWS",
-          range: 'Info!H1',
+          range: 'Info!L1',
           values: [[datetime]],
       }).then(function(response){
           console.log(response)
