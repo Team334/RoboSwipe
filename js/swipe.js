@@ -83,12 +83,14 @@ function initswipe(){
                 else $('.names').append('<div class="chip '+user+'">'+data.fullname+'-CUT</div>');
                 corrolate[String(user)] = data.fullname;
             }
-            if(swipes){
-                if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>');
+            else{
+                if(swipes){
+                    if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>');
+                    else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
+                }
                 else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
+                corrolate[String(user)] = data.fullname;
             }
-            else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
-            corrolate[String(user)] = data.fullname;
         });
     });
     osisref.on('value',function(snapshot){
