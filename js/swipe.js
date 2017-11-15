@@ -1,8 +1,9 @@
 firebase.initializeApp(config);
 var osiss;
 var idnums;
-var corrolate = {}
+var corrolate = {};
 var d;
+var cuts = [];
 var provider = new firebase.auth.GoogleAuthProvider();
 $(document).ready(function(){
     d = new Date();
@@ -43,6 +44,11 @@ $(document).ready(function(){
             }
             else{
                 userref.update(update).then(() => {
+                    if(cuts.find(id)){
+                        $('body').removeClass('black');
+                        $('body').addClass('yellow');
+                        alert('CUT');
+                    }
                     $('body').removeClass('black');
                     $('body').addClass('green');
                     setTimeout(function(){
@@ -68,6 +74,15 @@ function initswipe(){
         $.each(snapshot.val(), function(user,vals) {
             data = vals.userdata
             swipes = vals.swipes
+            if(data.cut){
+                cuts.push(user);
+                if(swipes){
+                if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'-CUT</div>');
+                else $('.names').append('<div class="chip '+user+'">'+data.fullname+'-CUT</div>');
+                 }
+                else $('.names').append('<div class="chip '+user+'">'+data.fullname+'-CUT</div>');
+                corrolate[String(user)] = data.fullname;
+            }
             if(swipes){
                 if(swipes[d]) $('.signedinnames').append('<div class="chip" class="'+user+'">'+data.fullname+'</div>');
                 else $('.names').append('<div class="chip '+user+'">'+data.fullname+'</div>');
