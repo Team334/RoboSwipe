@@ -44,7 +44,7 @@ $(document).ready(function(){
             }
             else{
                 userref.update(update).then(() => {
-                    if(cuts.find(id)){
+                    if(include(cuts,id)){
                         $('body').removeClass('black');
                         $('body').addClass('yellow');
                         alert('CUT');
@@ -97,4 +97,8 @@ function initswipe(){
     idcardnumref.on('value',function(snapshot){
         idnums = snapshot.val();
     })
+}
+
+function include(arr,obj) {
+    return (arr.indexOf(obj) != -1);
 }
