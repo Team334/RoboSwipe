@@ -9,6 +9,8 @@ firebase.initializeApp(config);
 
 var usersref = firebase.database().ref('/users/');
 
+// var frs = ["Bdg37qkcs5h6DrHGIqhxyxXTJ2p2","n7iE1Y8s0acPX6sJVOxQJoPWtX52","9BjdmEQdxHeiecai5fbF4kX5wgA2","E2QoKFgRLdaCuxkzf2Fx5ZARgJv2","m2y26f6niqeiRcU59Ce78KRBquL2","hFEk30GFWkfM7AXfFMQpaUTexvh2","sk6IUbSrfXahNXUD3wxLNhjDKFN2","XDFOCHO8ERZA3VngVGABHz8Gqp73","jsFgMu4UOsWNy2nWQ8H7Xtj4ngE2","GAMeiBAysHfnO8HVwnauZLn2AHE2","8O8OgWwGH1gT4TLZn4NbHU77QHX2","Ct3kWaOYqSMjOXIamFa9QlGapvx1","8O8OgWwGH1gT4TLZn4NbHU77QHX2","XbUVyPaqa7NvHnPjmfin88mqn6S2","WPSz4DfI6wWcfw4aUMEDeXZikNh1","C5ZlDbmDHUfYTBsIeOjFNnBhVeg1","t0dJT1gt3DaqiMkGBALyMOn0bQj2","ZKjgNWHBa7QUZk02UkVDGGHyPys1","sVr12EJisLgzrLJMbsTaxDWKRRB3","2WdkAn74zRTSKpKVRNF0TckFqYt2","ZjjMo8lNBRQuyms2GuCZvX6AoUO2","emTK5uJ7S0d05dCgXsyLFTsvW5O2","bLERNH8nuTesIm7waxneFjrFOhb2","gsUGj0dPH8UzXVPuNs0cHRvAMhm2","oAHtwyRCMIRYk8aJTuraG8jevCF3","9N0r8ilqJ6S5W8h9pqWtGkszqg33","jbptLJmOx2bh8UeNybrbpHpp1f92v","5VYDvCi3RaPuP801bS3j1RhQ7cN2","0JBnCwpZZeXMSmE8Hk4tJ4IiGZU2","kGSDuLQMP4OKSgVra5fCDD9ajE32","Q3Odp4hQVPXvW5huKe3bN97cC2u2","qBwK5crMitN9LkPDnSdk5Yx7cVP2","oopwQGCrYHM95K52LDzTVvAS0rP2","85iBvAo6ddONLiZfyiLl9qDSNfz2","uL830SfjXwPFfcq5gxb7fSKUTHf1","8IO6EWAhn7W8MudihYp7X7JMQ7W2","1v9w0UlnECQ1Dh6OA47sYGIMX0W2","1cGv0xjoDBegw4SoPj1vcllfDYA2"]
+
 function handleClientLoad() {
   gapi.load('client:auth2', initClient);
 }
@@ -90,6 +92,7 @@ function updatesheet(ids,runs){
         var updates = [];
         // console.log(ids)
         snpshot = snapshot.val()
+        var cuts=[];
         $.each(snapshot.val(), function(user,vals) {
             data = vals.userdata
             swipes = vals.swipes
@@ -99,9 +102,18 @@ function updatesheet(ids,runs){
             else{
                 updates.push([data.fullname,user,data.email,data.grade,data.osis,data.idcardnum])
             }
+            cuts.push(data.cut)
+            console.log(cuts);
             runs++;
         });
         // console.log(updates)
+        gapi.client.sheets.spreadsheets.values.append({
+          spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
+          valueInputOption: 'USER_ENTERED',
+          majorDimension: "ROWS",
+          range: 'Info!K'+(2+ids.length),
+          values: cuts,
+        })
         gapi.client.sheets.spreadsheets.values.append({
           spreadsheetId: '1fSrABDzlqlbuBeuTDbBl5lKN6MGACkiMTtjIWSGeUkI',
           valueInputOption: 'USER_ENTERED',
@@ -139,6 +151,9 @@ function updateswipes(ids,runs,data){
     var dates = [];
     var updates = [];
     $.each(data, function(user,vals) {
+        console.log(user);
+        // if(frs.includes(user)) firebase.database().ref('users/' + user + '/userdata/').update({cut: false});
+        // else firebase.database().ref('users/' + user + '/userdata/').update({cut: true});
         $.each(vals.swipes,function(date,time){
             if(!dates.includes(date)) dates.push(date);
         });
@@ -151,7 +166,9 @@ function updateswipes(ids,runs,data){
         });
         $.each(dates,function(index,date){
             if(tmpdates.includes(date)) tmp.push(convertTimestamp(vals.swipes[date]))
-            else tmp.push("ABSENT")
+            else{
+                tmp.push("ABSENT");
+            }
         });
         updates.push(tmp);
     });

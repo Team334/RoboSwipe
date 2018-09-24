@@ -1,10 +1,10 @@
 var config = {
-  apiKey: "AIzaSyAWFwCOE8yE1c3x9x-z__mypsavCTcR89s",
-  authDomain: "roboswipe-8d9c9.firebaseapp.com",
-  databaseURL: "https://roboswipe-8d9c9.firebaseio.com",
-  projectId: "roboswipe-8d9c9",
-  storageBucket: "roboswipe-8d9c9.appspot.com",
-  messagingSenderId: "40323734350"
+  apiKey: "AIzaSyDxSj7GHgVCjYTqVyMtGpGWfpKevRol95Y",
+  authDomain: "roboswipe2019.firebaseapp.com",
+  databaseURL: "https://roboswipe2019.firebaseio.com",
+  projectId: "roboswipe2019",
+  storageBucket: "roboswipe2019.appspot.com",
+  messagingSenderId: "26320345241"
 };
 
 //Super Secret
